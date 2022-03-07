@@ -1,0 +1,61 @@
+
+<div class="card">
+    <div class="card-body">
+      <h4 class="card-title col-md-4">Add Keyword Details</h4>
+      <form [formGroup]="angForm" novalidate>
+        <div class="form-group">
+          <label class="col-md-4">Keyword Name</label>
+          <div class="col-md-4">
+          <input type="text" class="form-control" 
+          maxlength="50"
+            formControlName="keyword" 
+            #keyword />
+          </div>
+        </div>
+     
+        <div *ngIf="angForm.controls['keyword'].invalid && (angForm.controls['keyword'].dirty || angForm.controls['keyword'].touched)" class="alert alert-danger col-md-4">
+          <div *ngIf="angForm.controls['keyword'].errors?.['required']">
+              Keyword  is required.
+          </div>
+       
+        </div>
+
+   
+        <div class="form-group">
+          <label class="col-md-4">Promo Documents List</label>
+      <div class="col-md-4"> 
+      <ng-multiselect-dropdown
+          [placeholder]="'Select'"
+          [settings]="dropdownSettings"
+          [data]="dropdownList"
+          formControlName="promoDocDesc"
+          (onSelect)="onItemSelect($event)"
+          [disabled]="disabled"
+          required
+    >
+    </ng-multiselect-dropdown>
+  </div>  
+        </div>
+      
+        <div *ngIf="angForm.controls['promoDocDesc'].invalid && (angForm.controls['promoDocDesc'].dirty || angForm.controls['promoDocDesc'].touched)" class="alert alert-danger col-md-4">
+            <div *ngIf="angForm.controls['promoDocDesc'].errors?.['required']">
+                Promo Document is required
+            </div>
+          </div>
+     
+  
+        <br>
+  
+        <div class="form-group">
+          <button (click) = "createKeyword(keyword.value)" type="submit" class="btn btn-primary"
+          [disabled]="angForm.pristine || angForm.invalid" >
+            Add New Keyword
+          </button>
+          <a routerLink='/keywords' class="btn btn-link" >Back to List </a>
+        </div>
+        
+      </form>
+    </div>
+  </div>
+  
+  
