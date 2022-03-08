@@ -20,10 +20,11 @@ import{ KeywordService } from './_services/keyword.service';
 import { NavComponent } from './nav/nav.component';
 import { KeywordAddComponent } from './keyword-add/keyword-add.component';
 import { KeywordEditComponent } from './keyword-edit/keyword-edit.component';
-import { KeywordDeleteComponent } from './keyword-delete/keyword-delete.component';
+import { KeywordSearchComponent } from './keyword-search/keyword-search.component';
 import { PromodocGetComponent } from './promodoc-get/promodoc-get.component';
 
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
@@ -34,8 +35,9 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     NavComponent,
     KeywordAddComponent,
     KeywordEditComponent,
-    KeywordDeleteComponent,
-    PromodocGetComponent
+    KeywordSearchComponent,
+    PromodocGetComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

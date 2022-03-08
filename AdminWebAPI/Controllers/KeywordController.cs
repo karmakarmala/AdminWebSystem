@@ -37,6 +37,13 @@ namespace AdminWebAPI.Controllers
             return Ok(_db.KeywordDetails.Where(x => x.KeywordID == Id).FirstOrDefault());
         }
 
+        // GET: api/Keyword/Search/Keyword
+        [HttpGet("Search/{Keyword}")]
+        public IActionResult GetKeyword(string Keyword)
+        {
+            return Ok(_db.KeywordDetails.Where(x => x.Keyword == Keyword).ToList());
+        }
+
         // POST: api/Keyword/createkeyword
         [HttpPost("CreateKeyword")]
         public IActionResult CreateKeyword(KeywordDetails kdetails)
@@ -54,7 +61,7 @@ namespace AdminWebAPI.Controllers
         }
 
         // PUT: api/Keyword/UpdateKeyword/5
-        [Route("api/keyword/updatekeyword/{id}")]
+        // [Route("api/keyword/updatekeyword/{id}")]
         [HttpPut("UpdateKeyword/{keywordId}")]
         public IActionResult UpdateKeyword(int keywordId, KeywordDetails kdetails)
         {
@@ -88,21 +95,28 @@ namespace AdminWebAPI.Controllers
         }
 
         // DELETE: api/Keyword/DeleteKeyword/5
-        [Route("api/keyword/deletekeyword/{id}")]
+        [Route("api/keyword/deletekeyword/{keywordId}")]
         [HttpDelete("DeleteKeyword/{keywordId}")]
-        public IActionResult DeleteKeyword(int keywordId, KeywordDetails kdetails)
+        public IActionResult DeleteKeyword(int keywordId)
         {
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            kdetails.KeywordID = keywordId;
 
-            _db.Entry(kdetails).State = EntityState.Deleted;
+            // _db.Entry(kdetails).State = EntityState.Deleted;
 
             try
             {
+                var result = _db.KeywordDetails.FirstOrDefault(k => k.KeywordID == keywordId);
+
+                if (result != null)
+                {
+                    _db.KeywordDetails.Remove(result);
+                }
+
                 _db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
@@ -119,6 +133,8 @@ namespace AdminWebAPI.Controllers
 
             return Ok();
         }
+
+
 
         private bool KeywordDetailsExists(int keywordId)
         {

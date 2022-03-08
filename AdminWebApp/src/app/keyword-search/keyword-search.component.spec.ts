@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { KeywordDeleteComponent } from './keyword-delete.component';
+import { KeywordSearchComponent } from './keyword-search.component';
 
-describe('KeywordDeleteComponent', () => {
-  let component: KeywordDeleteComponent;
-  let fixture: ComponentFixture<KeywordDeleteComponent>;
+describe('KeywordSearchComponent', () => {
+  let component: KeywordSearchComponent;
+  let fixture: ComponentFixture<KeywordSearchComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ KeywordDeleteComponent ]
+      declarations: [ KeywordSearchComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(KeywordDeleteComponent);
+    fixture = TestBed.createComponent(KeywordSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,13 +1,13 @@
-<div class="card">        
-    <div class="card-body">
-        <input type="submit" routerLink='add' value="Add New Keyword" class="btn btn-info">
-    </div>
+<div class="card"> 
+  <div class="card-header">
+    Get the list of keywords mapping
+  </div>       
       <div class="card-body">
-          <h4 class="card-title">Keyword List</h4>
+          <h4 class="card-title">Keywords Collection</h4>
           <div *ngIf="!keywordslist" class="text-info"></div>
           <table class="table table-striped table-responsive" aria-labelledby="tableLabel" *ngIf="keywordslist">
             <thead>
-              <tr class="table-info">
+              <tr class="table-dark">
            
                 <th>Keyword Name</th>
                 <th>Promo Documents</th>
@@ -19,9 +19,9 @@
              
                 <td>{{ keyworddetails.keyword }}</td>
                 <td>{{ keyworddetails.promoDocDesc }}</td>
-                <td><a [routerLink]="['edit', keyworddetails.keywordID]" class="btn btn-info">Update</a>
+                <td><a [routerLink]="['edit', keyworddetails.keywordID]" class="btn btn-dark">Update</a>
                   
-                  <button (click) = "deleteKeyword(keyworddetails.keywordID,keyworddetails.keyword,keyworddetails.keyword  )" type="submit" class="btn btn-danger">
+                  <button (click) = "deleteKeyword(keyworddetails.keywordID)" type="submit" class="btn btn-danger">
                     Delete
                   </button>
               

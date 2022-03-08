@@ -1,9 +1,10 @@
 
 
-<nav class="navbar navbar-expand-sm bg-info navbar-dark sticky-top"  >
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top justify-content-between"  >
     <a class="navbar-brand" routerLink="keywords" >
      Admin Web App
     </a>
+  
     <div class="container-fluid">
       <ul class="navbar-nav">
         <li class="nav-item active">
@@ -11,7 +12,16 @@
             Keyword List
           </a>
         </li> 
-   
+        <li class="nav-item active">
+          <a routerLink="keywords/add" class="nav-link" routerLinkActive="active">
+            Add Keyword
+          </a>
+        </li> 
+        <li class="nav-item active">
+          <a routerLink="keywords/search/:" class="nav-link" routerLinkActive="active">
+            Search Keyword
+          </a>
+        </li> 
       </ul>
     </div>
   </nav>

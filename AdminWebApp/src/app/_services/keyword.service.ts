@@ -33,7 +33,11 @@ createKeyword(keyword,promoDocDesc){
     return this.http.get('https://localhost:5001/api/Keyword/GetKeyword/' + KeywordID)
   }
 
-  
+  searchKeyword(keyword:string)
+  {
+    console.log(keyword);
+    return this.http.get('https://localhost:5001/api/Keyword/Search/' + keyword)
+  }
 
   updateKeyword(keyword,promoDocDesc,keywordID){
     const obj = {
@@ -46,14 +50,9 @@ createKeyword(keyword,promoDocDesc){
     .subscribe(res=>console.log("Update complete"));
   }
 
-  deleteKeyword(keywordID,keyword,promoDocDesc){
-    const obj = {
-      keyword,
-      promoDocDesc
-    };
-
-    console.log(obj);
-    return this.http.put('https://localhost:5001/api/Keyword/DeleteKeyword/' + keywordID,obj)
+  deleteKeyword(keywordID){
+    console.log(keywordID);
+    return this.http.delete('https://localhost:5001/api/keyword/deletekeyword/' + keywordID)
     .subscribe(res=>console.log("Delete complete"));
   }
   

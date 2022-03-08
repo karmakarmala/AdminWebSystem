@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { KeywordGetComponent } from './keyword-get/keyword-get.component';
 import { KeywordAddComponent } from './keyword-add/keyword-add.component';
 import { KeywordEditComponent } from './keyword-edit/keyword-edit.component';
+import { KeywordSearchComponent } from './keyword-search/keyword-search.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'keywords', component: KeywordGetComponent },
   { path: 'keywords/add',component:KeywordAddComponent},
-  { path: 'keywords/edit/:id',component:KeywordEditComponent}
+  { path: 'keywords/edit/:id',component:KeywordEditComponent},
+  { path: 'keywords/search/:keyword',component:KeywordSearchComponent}
 ];
 
 @NgModule({
