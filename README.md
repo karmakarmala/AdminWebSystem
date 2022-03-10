@@ -1,3 +1,3 @@
 # AdminWebSystem
 
-![alt text](https://github.com/karmakarmala/AdminWebSystem/Demo/DemoAdminWebSystem.gif "Application Demo")
+![alt text](https://github.com/karmakarmala/AdminWebSystem/blob/master/Demo/DemoAdminWebSystem.gif "Application Demo")
