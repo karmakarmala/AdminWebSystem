@@ -8,6 +8,7 @@ using System.Web.Http.Cors;
 using AdminWebAPI.Data;
 using AdminWebAPI.Models;
 using Microsoft.EntityFrameworkCore;
+using AdminWebAPI.Contracts;
 
 namespace AdminWebAPI.Controllers
 {
@@ -27,21 +28,46 @@ namespace AdminWebAPI.Controllers
         [HttpGet("GetKeyWords")]
         public IActionResult GetKeywords()
         {
-            return Ok(_db.KeywordDetails.ToList());
+            var keywordList = _db.KeywordDetails.ToList();
+
+            return Ok(keywordList);
+
         }
 
         // GET: api/Keyword/GetKeyword/5
         [HttpGet("GetKeyword/{Id}")]
         public IActionResult GetKeyword(int Id)
         {
-            return Ok(_db.KeywordDetails.Where(x => x.KeywordID == Id).FirstOrDefault());
+
+            var keywordsbyId = _db.KeywordDetails.Where(x => x.KeywordID == Id).FirstOrDefault();
+
+            if (keywordsbyId == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(keywordsbyId);
+            }
         }
 
         // GET: api/Keyword/Search/Keyword
         [HttpGet("Search/{Keyword}")]
-        public IActionResult GetKeyword(string Keyword)
+        public IActionResult SearchKeyword(string Keyword)
         {
-            return Ok(_db.KeywordDetails.Where(x => x.Keyword == Keyword).ToList());
+
+            var keywordbyName = _db.KeywordDetails.Where(x => x.Keyword == Keyword).ToList();
+
+            if (keywordbyName == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(keywordbyName);
+            }
+
+
         }
 
         // POST: api/Keyword/createkeyword
@@ -105,8 +131,6 @@ namespace AdminWebAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-
-            // _db.Entry(kdetails).State = EntityState.Deleted;
 
             try
             {

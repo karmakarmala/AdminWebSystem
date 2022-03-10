@@ -7,7 +7,9 @@ namespace AdminWebAPI.Models
     {
         [Key]
         public int KeywordID { get; set; }
+        [Required]
         public string Keyword { get; set; }
+        [Required]
         public string PromoDocDesc { get; set; }
     }
 }

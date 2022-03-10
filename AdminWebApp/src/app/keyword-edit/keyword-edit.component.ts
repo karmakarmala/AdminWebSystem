@@ -58,7 +58,9 @@ export class KeywordEditComponent implements OnInit {
             console.log("Name", this.promoName[i]);
             this.selectedItems.push({ id: this.promoName[i], name: this.promoName[i] });
             this.angForm.patchValue({ promoDocDesc: this.selectedItems });
+            this.promoString=this.promoName[i];
           }
+         
         });
 
   

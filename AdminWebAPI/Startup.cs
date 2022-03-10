@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using AdminWebAPI.Data;
 using Microsoft.EntityFrameworkCore;
+using AdminWebAPI.Contracts;
 
 namespace AdminWebAPI
 {
@@ -24,11 +25,14 @@ namespace AdminWebAPI
         }
 
         public IConfiguration Configuration { get; }
-        //public string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+
+
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddControllers();
 
             // Add the database connection string
@@ -42,14 +46,6 @@ namespace AdminWebAPI
                                                             .AllowAnyHeader()
                                                             .AllowAnyMethod());
 
-                /*  c.AddPolicy(name: MyAllowSpecificOrigins,
-                        builder =>
-                        {
-                            builder.WithOrigins("http://localhost:53855",
-                                                "http://localhost:4200");
-                        });
-                */
-
             });
         }
 
@@ -60,6 +56,8 @@ namespace AdminWebAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+
+
             app.UseCors("MyPolicy");
 
             app.UseHttpsRedirection();
